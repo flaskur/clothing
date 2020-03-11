@@ -2,19 +2,20 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage/Homepage';
+import ShopPage from './pages/shoppage/ShopPage';
 
-const HatPage = function({ history, location, match }) {
-	console.log(history);
-	console.log(location);
-	console.log(match);
+// const HatPage = function({ history, location, match }) {
+// 	console.log(history);
+// 	console.log(location);
+// 	console.log(match);
 
-	return (
-		<div>
-			<h1>hatspage</h1>
-			<h2>{match.params.someNumber}</h2>
-		</div>
-	);
-};
+// 	return (
+// 		<div>
+// 			<h1>hatspage</h1>
+// 			<h2>{match.params.someNumber}</h2>
+// 		</div>
+// 	);
+// };
 
 const App = function() {
 	return (
@@ -23,8 +24,7 @@ const App = function() {
 			{/* <Homepage /> */}
 			<Switch>
 				<Route exact path="/" component={Homepage} />
-				<Route exact path="/hats" component={HatPage} />
-				<Route path="/hats/:someNumber" component={HatPage} />
+				<Route exact path="/shop" component={ShopPage} />
 			</Switch>
 		</div>
 	);
