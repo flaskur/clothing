@@ -1,14 +1,17 @@
 .App {
 	text-align: center;
-	display: flex;
+	background-color: peachpuff;
+	/* display: flex;
 	justify-content: center;
 	background-color: lightcoral;
 	border: 5px solid black;
 	margin: 0 40px;
-	/* width: 100%; */
-	height: 80%;
+	width: 100%;
+	height: 80%; */
 }
 
-.App h1 {
+/* .App h1 {
 	text-align: inherit;
-}
+} */
+
+/* It makes sense to do flex direction of column for most web applications and organize them into divs that stack onto each other with full width. */

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Homepage.scss'; // You can import a sass file?
 
 const Homepage = function() {
 	return (
