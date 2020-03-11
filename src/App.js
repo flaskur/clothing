@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shoppage/ShopPage';
+import Header from './components/header/Header';
 
 // const HatPage = function({ history, location, match }) {
 // 	console.log(history);
@@ -21,6 +22,7 @@ const App = function() {
 	return (
 		<div className="App">
 			<h1>APPTAKEN</h1>
+			<Header />
 			{/* <Homepage /> */}
 			<Switch>
 				<Route exact path="/" component={Homepage} />
