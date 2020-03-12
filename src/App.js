@@ -5,11 +5,28 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shoppage/ShopPage';
 import SigninPage from './pages/signinpage/SigninPage';
 import Header from './components/header/Header';
+import { auth } from './firebase/firebase';
 
 const App = function() {
+	const [ currentUser, setCurrentUser ] = React.useState(null);
+
+	// This is a component did mount because the auth always listens, you don't need to set on every update.
+	let unsubscribe = null;
+
+	React.useEffect(() => {
+		unsubscribe = auth.onAuthStateChanged((user) => {
+			setCurrentUser(user);
+
+			console.log(user);
+		});
+		return function cleanup() {
+			unsubscribe();
+		};
+	}, []);
+
 	return (
 		<div className="App">
-			<Header />
+			<Header currentUser={currentUser} />
 			<Switch>
 				<Route exact path="/" component={Homepage} />
 				<Route exact path="/shop" component={ShopPage} />

@@ -15,3 +15,6 @@
 } */
 
 /* It makes sense to do flex direction of column for most web applications and organize them into divs that stack onto each other with full width. */
+* {
+	box-sizing: border-box;
+}

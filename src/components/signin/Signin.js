@@ -2,6 +2,7 @@ import React from 'react';
 import './Signin.scss';
 import FormInput from '../form_input/FormInput';
 import CustomButton from '../custom_button/CustomButton';
+import { signInWithGoogle } from '../../firebase/firebase';
 
 const Signin = function() {
 	const [ email, setEmail ] = React.useState('');
@@ -45,9 +46,14 @@ const Signin = function() {
 					required
 				/>
 
-				<CustomButton type="submit" value="Submit Form">
-					Sign In
-				</CustomButton>
+				<div className="buttons">
+					<CustomButton type="submit">Sign In</CustomButton>
+					{/* isGoogleSignIn is default True */}
+					<CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+						{' '}
+						Sign In With Google{' '}
+					</CustomButton>
+				</div>
 			</form>
 		</div>
 	);
