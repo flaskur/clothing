@@ -5,7 +5,7 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shoppage/ShopPage';
 import SigninPage from './pages/signinpage/SigninPage';
 import Header from './components/header/Header';
-import { auth } from './firebase/firebase';
+import { auth, createUserProfileDocument } from './firebase/firebase';
 
 const App = function() {
 	const [ currentUser, setCurrentUser ] = React.useState(null);
@@ -14,10 +14,19 @@ const App = function() {
 	let unsubscribe = null;
 
 	React.useEffect(() => {
-		unsubscribe = auth.onAuthStateChanged((user) => {
-			setCurrentUser(user);
+		unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth);
 
-			console.log(user);
+				userRef.onSnapshot((snapShot) => {
+					setCurrentUser({
+						id: snapShot.id,
+						...snapShot.data()
+					});
+				});
+			}
+
+			setCurrentUser(userAuth);
 		});
 		return function cleanup() {
 			unsubscribe();
